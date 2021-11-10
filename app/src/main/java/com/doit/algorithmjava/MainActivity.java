@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 //            Sort sort = new Sort();
 //            sort.insertionSort(nums);
 
-            int[] nums= {1,2,3,4,4,5,9,12};
-            bs.searchRange(nums,4);
+//            int[] nums= {1,2,3,4,4,5,9,12};
+//            bs.searchRange(nums,4);
 
             //</editor-fold>
 
@@ -59,6 +59,25 @@ public class MainActivity extends AppCompatActivity {
             //</editor-fold>
 
 
+            //<editor-fold desc="33. 搜索旋转排序数组">
+//            int[] nums= {4,5,6,7,0,1,2};
+//            int[] nums= {3,1};
+//            int target = 1;
+//
+//            bs.rotateSearch(nums,target);
+            //</editor-fold>
+
+            // <editor-fold desc="81. 搜索旋转排序数组 II">
+//            int[] nums= {1,0,1,1,1};
+//            int target = 0;
+//            bs.rotateSearch2(nums,target);
+            //</editor-fold>
+
+            // <editor-fold desc="275. H 指数 II II">
+                int[] nums= {11,15};
+              bs.hIndex(nums);
+
+           // </editor-fold>
 
         });
 
