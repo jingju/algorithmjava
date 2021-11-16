@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.doit.algorithmjava.binarysearch.BinarySearch;
+import com.doit.algorithmjava.binarysearch.BinarySearch2;
 import com.doit.algorithmjava.common.ListNode;
 import com.doit.algorithmjava.list.LinkList;
 import com.doit.algorithmjava.slidewindow.SlideWindow;
@@ -74,10 +75,18 @@ public class MainActivity extends AppCompatActivity {
             //</editor-fold>
 
             // <editor-fold desc="275. H 指数 II II">
-                int[] nums= {11,15};
-              bs.hIndex(nums);
+//                int[] nums= {11,15};
+//              bs.hIndex(nums);
 
            // </editor-fold>
+
+            BinarySearch2 bs2 = new BinarySearch2();
+//
+//            bs2.mySqrt(2147483647);
+            int nums[]={2,3,5,7,11};
+           bs2.smallestDivisor(nums,11);
+
+
 
         });
 
