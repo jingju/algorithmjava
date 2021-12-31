@@ -2,10 +2,13 @@ package com.doit.algorithmjava.binarysearch;
 
 // Created by Macro on 7/30/21.
 
-import java.lang.reflect.Array;
-import java.nio.charset.MalformedInputException;
 import java.util.Arrays;
 import java.util.HashMap;
+
+/**
+ * 题型一
+ * 二分求下标
+ */
 
 public  class BinarySearch {
 

@@ -119,7 +119,6 @@ public class BinarySearch2 {
                     result+=nums[i]/mid+1;
                 }
             }
-            //这里的判断条件改下，只懂left，不懂rihgt
             if(result>threshold){
                 left=mid+1;
             }else{

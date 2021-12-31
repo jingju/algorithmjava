@@ -7,10 +7,13 @@ import android.widget.TextView;
 
 import com.doit.algorithmjava.binarysearch.BinarySearch;
 import com.doit.algorithmjava.binarysearch.BinarySearch2;
+import com.doit.algorithmjava.binarysearch.BinnarySearch3;
 import com.doit.algorithmjava.common.ListNode;
 import com.doit.algorithmjava.list.LinkList;
 import com.doit.algorithmjava.slidewindow.SlideWindow;
 import com.doit.algorithmjava.sort.Sort;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,12 +83,27 @@ public class MainActivity extends AppCompatActivity {
 
            // </editor-fold>
 
-            BinarySearch2 bs2 = new BinarySearch2();
+//            BinarySearch2 bs2 = new BinarySearch2();
 //
 //            bs2.mySqrt(2147483647);
-            int nums[]={2,3,5,7,11};
-           bs2.smallestDivisor(nums,11);
+//            int nums[]={2,3,5,7,11};
+//           bs2.smallestDivisor(nums,11);
 
+            BinnarySearch3 bs3=new BinnarySearch3();
+            //<editor-fold desc="1011. 在 D 天内送达包裹的能力">
+            //            int nums[]={1,2,3,4,5,6,7,8,9,10};
+//            bs3.shipWithinDays(nums,5);
+            //</editor-fold>
+
+            //<editor-fold desc=" 1482. 制作 m 束花所需的最少天数">
+
+//                int nums[] = {7, 7, 7, 7, 12, 7, 7};
+//                bs3.minDays(nums, 2, 3);
+            //</editor-fold>
+//            String s= "AABABBA";
+            String s= "AABABBA";
+            SlideWindow slideWindow = new SlideWindow();
+            slideWindow.characterReplacement(s,1);
 
 
         });

@@ -40,6 +40,7 @@ public class Sort {
         int targetIndex = 0;
         for (int i = 0; i < nums.length - 1; i++) {//
             targetIndex = i;
+            //选择后面比当前数大的数进行交换
             for (int j = i + 1; j < nums.length; j++) {//注意，第二个for循环的值取length
                 if (nums[j] < nums[targetIndex]) {
                     targetIndex = j;
@@ -259,4 +260,10 @@ public class Sort {
 
     //</editor-fold>
 
+
+
+    //<editor-fold desc=" 非比教排序（计数排序，基数排序、桶排序）">
+
+
+    //</editor-fold>
 }
