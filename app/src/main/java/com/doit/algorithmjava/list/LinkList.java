@@ -10,6 +10,21 @@ import java.util.List;
 public class LinkList {
 
     /**
+     * 创建一个链表
+     * @param
+     * @return
+     */
+    public ListNode createListNode(int[] array){
+        ListNode head= new ListNode(0);
+        ListNode current=head;
+        for (int i = 0; i < array.length; i++) {
+            current.next=new ListNode(array[i]);
+            current=current.next;
+        }
+        return head.next;
+    }
+
+    /**
      * 876. 链表的中间结点
      * 给定一个头结点为 head 的非空单链表，返回链表的中间结点。
      *
@@ -40,15 +55,15 @@ public class LinkList {
      */
     /**
      * todo 快慢指针：比较经典的做法是：
+     *                  tip:快指针移动的速度是慢指针的两倍，
+     *                  所以当慢指针移动到中间，快指针已经移到结尾
      *
      * 使用两个指针变量，刚开始都位于链表的第 1 个结点，一个永远一次只走 1 步，一个永远一次只走 2 步，
      * 一个在前，一个在后，同时走。这样当快指针走完的时候，慢指针就来到了链表的中间位置。
      *
-     * todo 这个题的思路，以快指针作为参考，来走慢指针
      *
      *   思想是：快慢指针的前进方向相同，且它们步伐的「差」是恒定的，根据这种确定性去解决链表中的一些问题。使用这种思想还可以解决链表的以下问题：
          解决这些问题的共同特点就是使用两个指针变量同步移动。解决链表的问题常见的技巧还有：
-         todo
          1、使用递归函数，避免复杂的更改指针变量指向操作，使得求解问题变得简单。
          「力扣」第 206 题：反转链表；
          「力扣」第 24 题：两两交换链表中的节点；
@@ -181,6 +196,195 @@ public class LinkList {
 //
 //        return finalResult;
 //    }
+
+
+    //<editor-fold desc=" 82. 删除排序链表中的重复元素 II">
+    /**
+     * 82. 删除排序链表中的重复元素 II
+     * 存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除链表中所有存在数字重复情况的节点，只保留原始链表中 没有重复出现 的数字。
+     *
+     * 返回同样按升序排列的结果链表。
+     *
+     *
+     *
+     * 示例 1：
+     *
+     *
+     * 输入：head = [1,2,3,3,4,4,5]
+     * 输出：[1,2,5]
+     * 示例 2：
+     *
+     *
+     * 输入：head = [1,1,1,2,3]
+     * 输出：[2,3]
+     *
+     *
+     * 提示：
+     *
+     * 链表中节点数目在范围 [0, 300] 内
+     * -100 <= Node.val <= 100
+     * 题目数据保证链表已经按升序排列
+     */
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+
+    public ListNode deleteDuplicates(ListNode head) {
+        if(null==head){
+            return null;
+        }
+        ListNode virtulHead= new ListNode(0);
+        virtulHead.next= head;
+        deleateNode(virtulHead,head);
+        return virtulHead.next;
+    }
+
+    public void deleateNode(ListNode pre,ListNode current){
+        if(current==null||current.next==null){
+            return;
+        }
+        if(current.val==current.next.val){
+            while(current.next!=null &&current.val==current.next.val){
+                current.next=current.next.next;
+            }
+            pre.next=current.next;
+        }else{
+            pre=current;
+        }
+        deleateNode(pre,pre.next);
+    }
+
+    //</editor-fold>
+
+
+    //<editor-fold desc="206. 反转链表">
+    /**
+     * 206. 反转链表
+     * 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+     *  
+     *
+     * 示例 1：
+     *
+     *
+     * 输入：head = [1,2,3,4,5]
+     * 输出：[5,4,3,2,1]
+     * 示例 2：
+     *
+     *
+     * 输入：head = [1,2]
+     * 输出：[2,1]
+     * 示例 3：
+     *
+     * 输入：head = []
+     * 输出：[]
+     *  
+     *
+     * 提示：
+     *
+     * 链表中节点的数目范围是 [0, 5000]
+     * -5000 <= Node.val <= 5000
+     *  
+     *
+     * 进阶：链表可以选用迭代或递归方式完成反转。你能否用两种方法解决这道题？
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/reverse-linked-list
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+    public ListNode reverseList(ListNode head) {
+        ListNode virtulHead= new ListNode(0);
+        ListNode currentNode=head;
+        /**
+         * currentNode必须是原理的Node
+         */
+        while (currentNode.next!=null){
+            //todo 需要将最后一个node的next设置为null,
+            //下面的node需要重新创建
+            /**
+             * 1、给当前节点的next赋值
+             * 2、给virtulNode的next赋值日
+             */
+            //todo 复制一个temp借点，用作下一个节点
+
+            ListNode  temp = new ListNode(currentNode.next.val);
+            temp.next = currentNode.next.next;//这时，下一位的下一位还不瘦到影响
+            currentNode.next=virtulHead.next;
+            virtulHead.next=currentNode;
+            currentNode=temp;
+        }
+
+        return virtulHead.next;
+    }
+    //</editor-fold>
+
+
+    //<editor-fold desc="24. 两两交换链表中的节点">
+    /**
+     * 24. 两两交换链表中的节点
+     * 给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
+     *
+     *
+     *
+     * 示例 1：
+     *
+     *
+     * 输入：head = [1,2,3,4]
+     * 输出：[2,1,4,3]
+     * 示例 2：
+     *
+     * 输入：head = []
+     * 输出：[]
+     * 示例 3：
+     *
+     * 输入：head = [1]
+     * 输出：[1]
+     *
+     *
+     * 提示：
+     *
+     * 链表中节点的数目在范围 [0, 100] 内
+     * 0 <= Node.val <= 100
+     *
+     * todo 思路：记录当前结点，可以用递归
+     *           思路是对的，需要再调整下交换的方法
+     *
+     */
+    public ListNode swapPairs(ListNode head) {
+        ListNode virtulNode=new ListNode(0);
+        swapPairsRecycle(virtulNode,head);
+        return virtulNode.next;
+
+    }
+
+    /**
+     * @param current
+     * @param currentNext
+     */
+    public void swapPairsRecycle(ListNode current ,ListNode currentNext){
+        if(current==null && null==currentNext){
+            return;
+        }
+        current.next=currentNext;
+        ListNode temp=currentNext;
+        ListNode tempNext=null;
+        if(null!=currentNext.next.next) {
+            tempNext = new ListNode(currentNext.next.next.val);
+            tempNext.next = currentNext.next.next.next;
+        }
+        current.next=current.next.next;
+        current.next.next=temp;
+        //todo 最后一个的Next一定是Null
+        swapPairsRecycle(current.next.next,tempNext);
+    }
+    //</editor-fold>
 
 
 }

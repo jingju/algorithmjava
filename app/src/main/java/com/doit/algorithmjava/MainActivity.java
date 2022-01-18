@@ -9,11 +9,14 @@ import com.doit.algorithmjava.binarysearch.BinarySearch;
 import com.doit.algorithmjava.binarysearch.BinarySearch2;
 import com.doit.algorithmjava.binarysearch.BinnarySearch3;
 import com.doit.algorithmjava.common.ListNode;
+import com.doit.algorithmjava.doublepointer.DoublePointer;
 import com.doit.algorithmjava.list.LinkList;
+import com.doit.algorithmjava.queueandstack.StackTest;
 import com.doit.algorithmjava.slidewindow.SlideWindow;
 import com.doit.algorithmjava.sort.Sort;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -101,9 +104,36 @@ public class MainActivity extends AppCompatActivity {
 //                bs3.minDays(nums, 2, 3);
             //</editor-fold>
 //            String s= "AABABBA";
-            String s= "AABABBA";
-            SlideWindow slideWindow = new SlideWindow();
-            slideWindow.characterReplacement(s,1);
+//            String s= "AABABBA";
+//            SlideWindow slideWindow = new SlideWindow();
+//            slideWindow.characterReplacement(s,1);
+
+
+            //<editor-fold desc="167. 两数之和 II - 输入有序数组">
+//            DoublePointer doublePointer = new DoublePointer();
+//            int  []nums={5,25,75};
+//            doublePointer.twoSum(nums,100);
+            //</editor-fold>
+
+
+            //<editor-fold desc="11. 盛最多水的容器">
+//                DoublePointer doublePointer = new DoublePointer();
+//                int  []nums={1,8,6,2,5,4,8,3,7};
+//                doublePointer.maxArea(nums);
+            //</editor-fold>
+
+            // <editor-fold desc="删除排序链表中的重复元素 II">
+            LinkList linkList = new LinkList();
+//            int[] a={1,2,3,3,4,4,5};
+//            ListNode node =linkList.createListNode(a);
+//            linkList.deleteDuplicates(node);
+
+//            int[] a={1,2,3,4};
+//            ListNode node =linkList.createListNode(a);
+//            linkList.swapPairs(node);
+            //</editor-fold>
+//            String s=
+//            StackTest stackTest = new StackTest();
 
 
         });

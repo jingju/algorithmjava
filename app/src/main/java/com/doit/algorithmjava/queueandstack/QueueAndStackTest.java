@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Stack;
 
 public class QueueAndStackTest {
 
@@ -52,34 +53,59 @@ public class QueueAndStackTest {
      */
     public boolean isValid(String s) {
         /**
-         * 1、队列里，先放一个，再取，如果一样，将队列里的元素弹出，并取下一个放队列里
-         * 2、如果不同，也放队列里。
+         * 1、栈里，先放一个，再取，如果一样，将栈里的元素弹出，并取下一个放栈里
+         * 2、如果不同，也放栈里。
          * 3、如果整个遍历流程走完，队列为0，则满足
          *    {'，'}'，'['，']
          */
         /**括号都是成对出现的，不是偶数和长度为0的时候肯定是错的*/
-        if(s.length()%2>0||s.length()==0){
+//        if(s.length()%2>0||s.length()==0){
+//            return false;
+//        }
+//        HashMap<Character, Character> map = new HashMap<Character,Character>();
+//        map.put(')','(');
+//        map.put('}','{');
+//        map.put(']','[');
+//        LinkedList<Character> stack= new LinkedList<>();
+//        for (int i = 0; i < s.length(); i++) {
+//            Character c = s.charAt(i);
+//            if(!map.containsKey(c)){
+//                stack.push(c);
+//            }else{
+//                /**
+//                 * 如果满足正确性，栈的最上面一个一定是和当前字符串成对的。
+//                 */
+//                if (stack.peek() != map.get(c)) {
+//                    return false;
+//                }
+//                stack.pop();
+//            }
+//        }
+
+        //联系
+        if(s.length()%2!=0||s.length()==0){
             return false;
         }
-        HashMap<Character, Character> map = new HashMap<Character,Character>();
+
+        HashMap<Character,Character> map=new HashMap<>();
         map.put(')','(');
-        map.put('}','{');
         map.put(']','[');
-        LinkedList<Character> stack= new LinkedList<>();
+        map.put('}','{');
+        Stack<Character> stack= new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             Character c = s.charAt(i);
             if(!map.containsKey(c)){
                 stack.push(c);
             }else{
-                /**
-                 * 如果满足正确性，栈的最上面一个一定是和当前字符串成对的。
-                 */
-                if (stack.peek() != map.get(c)) {
+                if(map.get(c) != stack.peek()){
                     return false;
                 }
+
                 stack.pop();
             }
         }
+
+
         return stack.isEmpty();
     }
     //</editor-fold>
