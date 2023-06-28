@@ -97,6 +97,9 @@ public class QueueAndStackTest {
             if(!map.containsKey(c)){
                 stack.push(c);
             }else{
+                /**
+                 * 注意：栈里的东西都是后来自己操作的，根字符串并没有直接的关联
+                 */
                 if(map.get(c) != stack.peek()){
                     return false;
                 }
@@ -185,7 +188,7 @@ public class QueueAndStackTest {
         PriorityQueue<ListNode> priorityQueue= new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
             @Override
             public int compare(ListNode o1, ListNode o2) {
-                return o1.val-o2.val;//生序
+                return 1;//生序
             }
         });
         //先将每个头结点放进去
@@ -208,7 +211,9 @@ public class QueueAndStackTest {
 
         return tempNode.next;
     }
-        //</editor-fold>
+    //</editor-fold>
+
+
 
 
 

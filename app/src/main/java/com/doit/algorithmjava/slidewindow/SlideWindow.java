@@ -98,6 +98,33 @@ public class SlideWindow {
 //        return max;
     //ok
     public int lengthOfLongestSubstring(String s){
+        /**
+         * start 0   end 0 maxLength =1
+         *
+         * map[a,0]
+         *
+         * ============================
+         *
+         * start 0  end 1
+         *
+         * map[a,0]
+         *    [b,1]
+         *
+         *    maxLenght=2;
+         *==============================
+         *    start 0  end 2
+         *
+         *    start 2  end 2
+         *
+         * map[a,0]
+         *    [b,2]
+         *    maxLength = 2
+         * =============================
+         *
+         *  start 2  end 3
+         * map[a,0]
+         *    [b,2]
+         */
         if(s.length()<2){//tip： 这里要判断为空或者是1个字符的情况。
             return s.length();
         }
@@ -108,6 +135,7 @@ public class SlideWindow {
         map.put(s.charAt(0),0);
         while(end <s.length()-1){
             end++;
+            //todo 这个+1是针对a的判断，因为并没有删除字符串中的字符。
             if(map.containsKey(s.charAt(end))){
                 start=Math.max(start,map.get(s.charAt(end))+1);
             }

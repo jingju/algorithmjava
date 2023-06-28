@@ -47,9 +47,9 @@ public class BinnarySearch3 {
      *      i堆有 pile[i]根
      *      总时间 H 小时
      *
-     *      吃香蕉的速度  K(根每小时)
+     *      吃香蕉的速度  K(根每小时）
      *
-     *      规律：一小时吃、一小时不吃
+     *      少于k根，将不再吃
      *
      *      求：H小时内，吃掉所有香蕉的最小速度
      *
@@ -62,12 +62,17 @@ public class BinnarySearch3 {
      */
 
     public int minEatingSpeed(int[] piles, int h) {
-//        int N= piles.length;//总堆数
-//        int K =0;
+
+//        int left=1;
+//        int right = piles[i];//最大的
+//        while(left<right){
+//            int mid = left+(right-left)/2;//mid 根
+//            int totaltim
+//            for (int i = 0; i < piles.length; i++) {
 //
-//        for (int i = 0; i < N; i++) {
-//            int currentNum=piles[i];
-//            currentNum/K；
+//            }
+//
+//
 //        }
 
         return 0;

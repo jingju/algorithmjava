@@ -64,6 +64,7 @@ public class LinkList {
      *
      *   思想是：快慢指针的前进方向相同，且它们步伐的「差」是恒定的，根据这种确定性去解决链表中的一些问题。使用这种思想还可以解决链表的以下问题：
          解决这些问题的共同特点就是使用两个指针变量同步移动。解决链表的问题常见的技巧还有：
+         todo
          1、使用递归函数，避免复杂的更改指针变量指向操作，使得求解问题变得简单。
          「力扣」第 206 题：反转链表；
          「力扣」第 24 题：两两交换链表中的节点；
@@ -125,7 +126,7 @@ public class LinkList {
         while(l1!=null || l2!=null){
             int currentSum=valAddToNext+(l1==null?0: l1.val)+(l2==null?0:l2.val);
             if(head==null){
-                head=new ListNode(currentSum%10);
+                head=tail=new ListNode(currentSum%10);
             }else{
                 tail.next=new ListNode(currentSum%10);
                 tail=tail.next;
@@ -253,7 +254,7 @@ public class LinkList {
         }
         if(current.val==current.next.val){
             while(current.next!=null &&current.val==current.next.val){
-                current.next=current.next.next;
+                current=current.next;
             }
             pre.next=current.next;
         }else{
@@ -298,31 +299,21 @@ public class LinkList {
      * 来源：力扣（LeetCode）
      * 链接：https://leetcode-cn.com/problems/reverse-linked-list
      * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
      */
     public ListNode reverseList(ListNode head) {
-        ListNode virtulHead= new ListNode(0);
-        ListNode currentNode=head;
-        /**
-         * currentNode必须是原理的Node
-         */
-        while (currentNode.next!=null){
-            //todo 需要将最后一个node的next设置为null,
-            //下面的node需要重新创建
-            /**
-             * 1、给当前节点的next赋值
-             * 2、给virtulNode的next赋值日
-             */
-            //todo 复制一个temp借点，用作下一个节点
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;//后面的指针指向前一个(pre 一开始需要设置个为null的变量)
+            prev = curr;
+            curr = next;
 
-            ListNode  temp = new ListNode(currentNode.next.val);
-            temp.next = currentNode.next.next;//这时，下一位的下一位还不瘦到影响
-            currentNode.next=virtulHead.next;
-            virtulHead.next=currentNode;
-            currentNode=temp;
         }
-
-        return virtulHead.next;
+        return prev;
     }
+
     //</editor-fold>
 
 
@@ -358,10 +349,45 @@ public class LinkList {
      *
      */
     public ListNode swapPairs(ListNode head) {
-        ListNode virtulNode=new ListNode(0);
-        swapPairsRecycle(virtulNode,head);
-        return virtulNode.next;
+//        ListNode virtulNode=new ListNode(0);
+//        swapPairsRecycle(virtulNode,head);
+//        return virtulNode.next;
 
+//        if (head == null || head.next == null) {
+//            return head;
+//        }
+//        //临时存储一下
+//        ListNode newHead = head.next;
+//        head.next = swapPairs(newHead.next);
+//        newHead.next = head;
+//        return newHead;
+        /**
+         * 思路：递归
+         *
+         *      递归的结束点？
+         *
+         *      分解小问题：
+         *         相邻两个节点，交换
+         *      递归结束点
+         *          当前节点的下一个节点为null
+         *      用一个虚拟头节点，脸上节点的第一个位置
+         *
+         *
+         *
+         *
+         *
+         *
+         */
+        ListNode dummyNode = head.next;//临时存储headNext
+
+        head.next=swapPairs(head.next);
+        //head 和 headlist交换位置
+        dummyNode.next=head;
+
+
+
+
+        return dummyNode;
     }
 
     /**
@@ -383,8 +409,9 @@ public class LinkList {
         current.next.next=temp;
         //todo 最后一个的Next一定是Null
         swapPairsRecycle(current.next.next,tempNext);
+
     }
+
+
     //</editor-fold>
-
-
 }

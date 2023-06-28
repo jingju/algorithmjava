@@ -1,6 +1,117 @@
 package com.doit.algorithmjava.sort;
 
 // Created by Macro on 8/4/21.
+/**
+ *  下面为一个算法可是化网站，可以通过动画的形式演示各种算法的原理
+ * {@see <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html"></a>}
+ * 排序分类：
+ *
+ *     1、比较排序
+ *          冒泡、选择、插入的实现方式类似，
+ *          都需与通过有规律的一轮一轮的比较，
+ *          没完成一轮的比较，都回确定一个元素的顺序，
+ *          最后一轮比较完成，所有元素的顺序都会被确定。
+ *
+ *          他们都有
+ *                  当前比较参照索引、     curIndex
+ *                  当前轮比较的总的长度、  length
+ *                  当前轮的结束条件、
+ *                  下一轮的起使索引(下轮选择开始的索引)、     nextCircleIndex
+ *                  结束条件
+ *          这几个相同的条件变量。
+ *          都有时间复杂度都较高
+ *
+ *          冒泡
+ *              条件变量：
+ *                     curIndex：元素在数组中的索引（当前索引和当前索引的下一个索引的元素值进行比较）
+ *                     length：第一轮为数组的总长度，以后每轮依次减一
+ *                     当前轮的结束条件：curIndex=length
+ *                     下一轮的起使索引：0
+ *                     结束条件： length=0
+ *              1、当前和下一位比较，如果比后面大，交换两者。
+ *              2、当前元素变成下一位元素，在重复步骤1
+ *              3、知道当前元素为数组的最后一个元素，结束一轮比较，这时，最后一个元素一定是最大的。
+ *              4、将总长度减1，重复1～3的步骤，进行下一轮的比较
+ *              5、当总的长度减到0的时候，所有比较结束，数组有序。
+ *          选择
+ *              和冒泡排序非常类似
+ *              条件变量：
+ *                  targetIndex：当前值最小的索引
+ *
+ *                  curIndex：元素在数组中的索引，第一次为1，因为 targetIndex 默认为0（当前索引元素值和 targetIndex 的元素值 进行比较，如果小，targetIndex=curIndex）
+ *                  length：数组的长度
+ *                  当前轮的结束条件：curIndex=length
+ *                  下一轮的起始索引：上一轮排好序的索引+1
+ *                  结束条件：下一轮的 起始索引 为数组的 长度
+ *              1、给 targetIndex 设置一个默认值0
+ *              2、当前和 targetIndex，如果值小于targetIndex ，将targetIndex 设置为当前索引。
+ *              3、完成一轮比较后，将targetIndex和数组左边待排序的索引位置元素交换，targetIndex不变
+ *              4、下一轮起始元素为下一个待排序的元素。
+ *              5、当下一轮的起始元素为length时候，结束。
+ *
+ *          插入
+ *              条件变量：
+ *                  curIndex：元素在数组中的索引
+ *
+ *              1、当前和下一位比较
+ *                      如果比后面大
+ *                      将后面的元素一次和当前元素前面的元素进行比较，
+ *                              如果小于前面的元素，和前面的元素交换，
+ *                              直到大于前面的某个元素，或者到达数组的第一个位置，停止。从此完成了一轮的比较。
+ *             这里不再做条件变量的分析。
+ *
+ *          快速
+ *             选择一个参照点：referenceIndex
+ *             每一轮的思路：
+ *                      目标是将参照的索引的值放到数组的某个位置，数组的左边都是小于targert的值，右边都是大于target的值
+ *                      参照索引取数组左边第一个，从右面开始比较
+ *                      参照索引取数组右边最后一个，从左边开始比较
+ *                      比较方式：参照取左边第一个，右边先有个小于 referenceIndex 的值，才会走左边，左边确定了大于 referenceIndex 的值，会交换，
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *          归并
+ *              体现了分治算法的思想，先分 后合并
+ *
+ *
+ *     2、非比较排序
+ *
+ *          堆排序
+ *              堆的创建和调整的过程
+ *
+ *          下面的不再讲解，具体参照以下链接
+ *          {@see <a href="https://leetcode-cn.com/problems/sort-an-array/solution/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/"></a>}
+ *          桶排序
+ *
+ *          计数排序
+ *
+ *          基数排序
+ *
+ * 排序的稳定性：
+ *
+ *      稳定的：
+ *
+ *      不稳定：
+ *
+ * 复杂度：
+ *
+ */
+
+
+
+
+
+
+
 
 /**
  * 912
@@ -23,6 +134,37 @@ package com.doit.algorithmjava.sort;
 
 //todo 写文章说明下，什么是稳定和非稳定的排序
 public class Sort {
+    //<editor-fold desc="冒泡排序">
+    public int[] bubbleSort(int[] nums) {
+        //方式一
+        int length=nums.length;
+        for (int i = length; i >0; i--) {
+            for (int j = 0; j < i; j++) {
+                if(nums[j]>nums[j+1]){
+                    swap(nums,j,j+1);
+                }
+            }
+        }
+
+        //方式二
+//        /**
+//         * 每冒完一次泡，总的长度减1
+//         */
+//        int i=0;
+//        int length=nums.length;
+//        while (i < length && length != 0) {
+//            while (i < length) {
+//                if (nums[i] < nums[i + 1]) {
+//                    swap(nums, i, i + 1);
+//                }
+//                i++;
+//            }
+//            length--;
+//            i=0;
+//        }
+        return nums;
+    }
+    //</editor-fold>
 
     //<editor-fold desc="选择排序">
 
@@ -66,7 +208,6 @@ public class Sort {
 
     /**
      * 确定基础的变化部分
-     *
      * 确定部分变化，随着整体变化调整的部分
      *
      *
@@ -198,6 +339,74 @@ public class Sort {
     //</editor-fold>
 
 
+
+
+    //<editor-fold desc="快速排序">
+
+    /**
+     * 快速排序参考链接
+     * @{<a href="https://zhuanlan.zhihu.com/p/93129029"></a>}
+     * @param nums
+     */
+    public void quikSort(int[] nums){
+        quik(0,nums.length,nums);
+    }
+    /**
+     * 递归快排
+     * @param left
+     * @param right
+     * @param nums
+     */
+    public void quik(int left,int right,int[] nums){
+        // TODO: 2023/5/14 这里的代码是错的
+        int tempLeft=left;
+        int tempRight=right;
+//        int referenceIndex=tempLeft;//参照的目标索引
+//        //目标： 将参照的索引的值放到数组的某个位置，数组的左边都是小于targert的值，右边都是大于target的值
+//        //参照索引取左，从右面开始比较
+//        while (tempLeft != tempRight) {
+//            //右边先有个小于 referenceIndex 的值，才会走左边，左边确定了大于 referenceIndex 的值，会交换，
+//            //然后重新进行下一轮比较
+//            while(nums[tempRight]>nums[referenceIndex]){
+//                tempRight--;
+//            }
+//            while(nums[tempLeft]<nums[referenceIndex]){
+//                tempLeft++;
+//            }
+//            //todo 交换位置
+//            swap(nums,tempLeft,tempRight);
+//        }
+//        //todo 重合，将 referenceIndex 和重合位置的数进行交换
+//        swap(nums,referenceIndex,tempLeft);
+//        //左边进行递归
+//        quik(left,tempLeft-1,nums);
+//        //右边进行递归
+//        quik(tempRight+1,right,nums);
+
+        int targetVAl=nums[tempLeft];
+        while(tempLeft != tempRight){
+            //先从有边开始比较
+            while(nums[right]>targetVAl){
+                tempRight--;
+            }
+            nums[tempLeft]=nums[tempRight];
+            tempLeft++;
+
+
+            while(nums[tempLeft]<targetVAl){
+                tempLeft++;
+            }
+            nums[tempRight]=nums[tempLeft];
+            tempRight--;
+        }
+        nums[tempLeft]=targetVAl;
+
+        //左边进行递归
+        quik(left,tempLeft-1,nums);
+        //右边进行递归
+        quik(tempRight+1,right,nums);
+    }
+    //</editor-fold>
 
 
 
